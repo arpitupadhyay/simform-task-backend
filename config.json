@@ -1,0 +1,4 @@
+﻿{
+  "connectionString": "mongodb+srv://arpit:arpitadmin@simform.bmbvy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "secret": "simformbackendjwt"
+}
