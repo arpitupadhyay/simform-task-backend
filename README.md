@@ -32,23 +32,23 @@
   npm run start
   ```
 
-  - once started you can visit [http://localhost:4200](http://localhost:4200)
+  - once started, server is running on [http://localhost:4000](http://localhost:4000)
 
 # API Endpoints
 
-| Endpoint               | Method | Payload                                  | Response                                             | Requirements                     | Description                     |
-| ---------------------- | ------ | ---------------------------------------- | ---------------------------------------------------- | -------------------------------- | ------------------------------- |
-| /accounts/register     | POST   | { firstName, lastName, email, Password } | { message }                                          | `password` must have 6 digit     | Register API                    |
-| /accounts/login}       | POST   | {email, password}                        | { firstName, lastName, email, jwtToken, timeStamps } | Form can't be blank              | authenticate and sign jwt token |
-| /accounts/user-details | GET    | Header: `Authorization=Bearer jwttoken`  | { userInfo }                                         | Need to pass Authorization token | Get user info by jwt token      |
-| /accounts/{userId}     | GET    | Header: `Authorization=Bearer jwttoken`  | { userInfo }                                         | Need to pass Authorization token | Get user info by UserId         |
-| /accounts/{userId}     | PUT    | Header: `Authorization=Bearer jwttoken`  | { updatedFields }                                    | Need to pass Authorization token | Update user info by userId      |
+| Endpoint               | Method | Payload                                  | Response                           | Requirements                     | Description                          |
+| ---------------------- | ------ | ---------------------------------------- | ---------------------------------- | -------------------------------- | ------------------------------------ |
+| /accounts/register     | POST   | { firstName, lastName, email, Password } | { message }                        | `password` must have 6 digit     | Register API                         |
+| /accounts/login        | POST   | {email, password}                        | { userInfo, jwtToken, timeStamps } | Form fields can't be blank       | authenticate user and sign jwt token |
+| /accounts/user-details | GET    | Header: `Authorization=Bearer jwttoken`  | { userInfo }                       | Need to pass Authorization token | Get user info by jwt token           |
+| /accounts/{:userId}    | GET    | Header: `Authorization=Bearer jwttoken`  | { userInfo }                       | Need to pass Authorization token | Get user info by UserId              |
+| /accounts/{:userId}    | PUT    | Header: `Authorization=Bearer jwttoken`  | { updatedFields }                  | Need to pass Authorization token | Update user info by userId           |
 
 # Additional Features
 
-| Endpoint           | Method | Payload                                 | Response    | Requirements | Description                   |
-| ------------------ | ------ | --------------------------------------- | ----------- | ------------ | ----------------------------- |
-| /accounts/{userId} | DELETE | Header: `Authorization=Bearer jwttoken` | { message } | none         | Delete the user from database |
+| Endpoint           | Method | Payload                                 | Response    | Requirements                     | Description                   |
+| ------------------ | ------ | --------------------------------------- | ----------- | -------------------------------- | ----------------------------- |
+| /accounts/{userId} | DELETE | Header: `Authorization=Bearer jwttoken` | { message } | Need to pass Authorization token | Delete the user from database |
 
 # Project Structure
 
