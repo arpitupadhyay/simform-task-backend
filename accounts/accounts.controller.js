@@ -47,12 +47,13 @@ function registerSchema(req, res, next) {
 
 function register(req, res, next) {
   accountService
-    .register(req.body, req.get("origin"))
-    .then(() =>
+    .register(req.body)
+    .then((r) => {
       res.json({
         message:
           "Registration successful. Please login.",
       })
+    }
     )
     .catch(next);
 }

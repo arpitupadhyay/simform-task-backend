@@ -32,7 +32,7 @@ async function authenticate({ email, password }) {
   };
 }
 
-async function register(params, origin) {
+async function register(params) {
   // validate
   try {
 
@@ -50,7 +50,7 @@ async function register(params, origin) {
     // save account
     await account.save();
   } catch (error) {
-    console.log("Err", error)
+    throw error
   }
 
 }

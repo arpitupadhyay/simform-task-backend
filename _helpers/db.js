@@ -8,7 +8,7 @@ mongoose.connect(
   config.connectionString,
   connectionOptions
 ).then((res) => {
-  console.log("res", res)
+  console.log("db connected");
 }).catch((e) => {
   console.log("error connecting db", e)
 });
