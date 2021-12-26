@@ -2,7 +2,6 @@
   "name": "simform-backend",
   "version": "1.0.0",
   "description": "APIs for the simform-backend project.",
-  "main": "server.js",
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
