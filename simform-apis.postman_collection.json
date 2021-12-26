@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "ea8fed8e-7648-42e0-986b-167324e6a0d4",
+		"name": "simform-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Arpit\",\r\n    \"lastName\": \"Upadhyay\",\r\n    \"email\": \"arpit201299@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", \"Bearer \"+jsonData.jwtToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"arpit201299@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/authenticate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/accounts/user-details",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"user-details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-by-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/accounts/61c884b870d00a653d548d27",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"61c884b870d00a653d548d27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/61c8762c6f047458b0f6963f",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"61c8762c6f047458b0f6963f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/accounts/61c8762c6f047458b0f6963f",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"61c8762c6f047458b0f6963f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
