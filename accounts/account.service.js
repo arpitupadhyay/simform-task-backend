@@ -34,19 +34,24 @@ async function authenticate({ email, password }) {
 
 async function register(params, origin) {
   // validate
-  if (await db.Account.findOne({ email: params.email })) {
-    // send already registered error in email to prevent account enumeration
-    throw "User is already Registered";
+  try {
+
+    if (await db.Account.findOne({ email: params.email })) {
+      // send already registered error in email to prevent account enumeration
+      throw "User is already Registered";
+    }
+
+    // create account object
+    const account = new db.Account(params);
+
+    // hash password
+    account.passwordHash = hash(params.password);
+
+    // save account
+    await account.save();
+  } catch (error) {
+    console.log("Err", error)
   }
-
-  // create account object
-  const account = new db.Account(params);
-
-  // hash password
-  account.passwordHash = hash(params.password);
-
-  // save account
-  await account.save();
 
 }
 
